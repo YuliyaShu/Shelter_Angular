@@ -1,1 +1,5 @@
-<p>pets works!</p>
+<app-pet-small-card class="pet-"
+  *ngFor="let pet of pets"
+  [name]="pet.name || defaultName"
+  [animalType]="pet.animalType || defaultType"
+></app-pet-small-card>

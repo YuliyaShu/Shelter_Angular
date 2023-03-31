@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
+import { Pet } from './interfaces/Pet';
+import { CONSTANTS } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-pets',
@@ -7,9 +9,27 @@ import { PetsService } from './pets.service';
   styleUrls: ['./pets.component.scss']
 })
 export class PetsComponent implements OnInit{
-  constructor(private petService: PetsService) {}
+  // name = '';
+  // animalType = '';
+  // breed = '';
+  // description = '';
+  // age = '';
+  // inoculations = '';
+  // diseases = '';
+  // parasites = '';
+  pets: Pet[] = [];
+  defaultName = CONSTANTS.PET_DEFAULT_NAME;
+  defaultType = CONSTANTS.PET_DEFAULT_TYPE;
+
+  constructor(private petsService: PetsService) {}
 
   ngOnInit(): void {
-    console.log(this.petService.getAllPets().subscribe())
+    console.log(this.petsService.getAllPets().subscribe())
+    this.petsService.getAllPets().subscribe((allPetsValue) => {
+      this.pets = allPetsValue;
+      return allPetsValue;
+    })
   }
+
+
 }
