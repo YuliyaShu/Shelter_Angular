@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
+import { PetsComponent } from './pets/pets.component';
 
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    PetsComponent
   ],
   imports: [
     CommonModule,
