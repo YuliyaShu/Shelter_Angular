@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HeaderComponent } from './core/common/header/header.component';
 import { FooterComponent } from './core/common/footer/footer.component';
 
@@ -27,6 +28,7 @@ import { FooterComponent } from './core/common/footer/footer.component';
     NoopAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
