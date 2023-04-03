@@ -6,13 +6,15 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { PetsComponent } from './pets/pets.component';
 import { PetSmallCardComponent } from './pets/pet-small-card/pet-small-card.component';
+import { IntroComponent } from './intro/intro.component';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     PetsComponent,
-    PetSmallCardComponent
+    PetSmallCardComponent,
+    IntroComponent
   ],
   imports: [
     CommonModule,
