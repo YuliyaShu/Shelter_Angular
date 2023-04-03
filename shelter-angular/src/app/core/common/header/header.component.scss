@@ -1,18 +1,21 @@
 @import '../../../../palette.scss';
 
+:host {
+  background-size: cover;
+}
+
 .header {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 90vw;
+  width: 1200px;
   height: 60px;
   z-index: 2;
 
   &__logo {
-    display: flex;
+    display: flex-start;
     flex-direction: column;
-    justify-content: start;
 
     &-title {
       margin-top: 30px;
@@ -52,6 +55,11 @@
       font-size: 15px;
       line-height: 160%;
       color: $main-white;
+
+      &:hover {
+        color: $main-beige;
+        transition: 1s;
+      }
     }
   }
 }

@@ -3,8 +3,16 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import './palette.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+ }
+body {
+  position: relative;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  width: 100vw;
+ }
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;

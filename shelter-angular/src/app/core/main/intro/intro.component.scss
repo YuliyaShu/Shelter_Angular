@@ -1,4 +1,90 @@
-.intro {
+@import '../../../../palette.scss';
+
+
+:host {
   display: flex;
-  margin-top: -90px;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: -130px;
+  background-image: url('../../../../assets/images/start-dog-screen.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  width: 100vw;
+}
+
+.intro {
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1280px;
+    height: 910px;
+  }
+
+  &__info {
+    margin-left: 40px;
+    margin-top: 300px;
+    display: flex-start;
+    flex-direction: column;
+    width: 25%;
+
+    &-header {
+      font-family: 'Georgia';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 44px;
+      line-height: 130%;
+      display: flex;
+      align-items: center;
+      color: $main-white;
+    }
+
+    &-description {
+      font-family: 'Arial';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 160%;
+      display: flex;
+      align-items: center;
+      color: $main-super-light-grey;
+      margin-top: 20px;
+    }
+  }
+
+  &__img {
+    margin-top: 182px;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $main-dark-grey;
+
+  &:hover {
+    color: $main-white;
+    transition: 1s;
+  }
+}
+
+button {
+  width: 187px;
+  height: 52px;
+  background-color: $main-beige;
+  border-radius: 100px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: transparent;
+  border: 2px solid $main-beige;
+  transition: 1s;
 }
