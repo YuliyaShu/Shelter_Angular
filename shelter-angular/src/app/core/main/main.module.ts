@@ -7,6 +7,7 @@ import { MainComponent } from './main.component';
 import { PetsComponent } from './pets/pets.component';
 import { PetSmallCardComponent } from './pets/pet-small-card/pet-small-card.component';
 import { IntroComponent } from './intro/intro.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { IntroComponent } from './intro/intro.component';
     MainComponent,
     PetsComponent,
     PetSmallCardComponent,
-    IntroComponent
+    IntroComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,

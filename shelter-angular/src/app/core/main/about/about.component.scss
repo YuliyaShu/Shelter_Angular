@@ -1,0 +1,48 @@
+@import '../../../../palette.scss';
+
+
+:host {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100vw;
+  background-color: $main-background-grey;
+}
+
+.about {
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: 588px;
+  }
+
+  &__info {
+    margin-left: 120px;
+    width: 30%;
+
+    &-header {
+      font-family: 'Georgia';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 35px;
+      line-height: 130%;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.06em;
+      color: $main-light-grey;
+    }
+
+    &-description {
+      font-family: 'Arial';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 160%;
+      color: $main-dark-grey;
+    }
+  }
+}
