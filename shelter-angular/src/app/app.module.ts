@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './core/main/main.module';
@@ -12,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HeaderComponent } from './core/common/header/header.component';
 import { FooterComponent } from './core/common/footer/footer.component';
+import { PetsModule } from './shared/pets/pets.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { FooterComponent } from './core/common/footer/footer.component';
     BrowserModule,
     MainModule,
     AdminModule,
+    PetsModule,
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,
