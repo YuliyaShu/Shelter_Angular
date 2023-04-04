@@ -20,4 +20,10 @@
     color: $main-light-grey;
     margin-top: 5%;
   }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
