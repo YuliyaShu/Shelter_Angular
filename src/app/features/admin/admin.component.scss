@@ -1,0 +1,29 @@
+@import '../../../palette.scss';
+
+.admin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+
+  &__header {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: $main-light-grey;
+    margin-top: 5%;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

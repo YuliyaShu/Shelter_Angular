@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'scss-reset/_reset.scss';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './palette.scss';
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+ }
+body {
+  position: relative;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  width: 100vw;
+ }
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}

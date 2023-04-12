@@ -1,0 +1,11 @@
+<app-pet-small-card
+  *ngFor="let pet of pets"
+  [name]="pet.name || defaultName"
+  [animalType]="pet.animalType || defaultType"
+  [breed]="pet.breed || defaultBreed"
+  [description]="pet.description || defaultDescription"
+  [age]="pet.age || defaultAge"
+  [inoculations]="pet.inoculations || defaultInoculations"
+  [diseases]="pet.diseases || defaultDiseases"
+  [parasites]="pet.parasites || defaultParasites"
+></app-pet-small-card>

@@ -1,0 +1,70 @@
+@import '../../../palette.scss';
+
+:host {
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1200px;
+  height: 60px;
+  z-index: 2;
+
+  &__logo {
+    display: flex-start;
+    flex-direction: column;
+
+    &-title {
+      margin-top: 30px;
+      font-family: 'Georgia';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 110%;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.06em;
+      color: $main-beige;
+    }
+
+    &-subtitle {
+      font-family: 'Arial';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.1em;
+      color: $main-white;
+    }
+  }
+
+  &__menu {
+    margin-top: 30px;
+    width: fit-content;
+    &-link {
+      margin-left: 20px;
+      text-decoration: none;
+      font-family: 'Arial';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 160%;
+      color: $main-white;
+      transition-duration: 0.5s;
+
+      &:hover {
+        color: $main-beige;
+        transition: 1s;
+      }
+    }
+  }
+}

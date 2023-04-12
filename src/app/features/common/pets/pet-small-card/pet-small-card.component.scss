@@ -1,0 +1,60 @@
+@import '../../../../../palette.scss';
+
+.pet-small-card {
+  display: flex;
+  align-items: center;
+  max-width: 270px;
+  margin: 10px;
+
+  img {
+    width: 70%;
+  }
+
+  &__header-title {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: $main-light-grey;
+  }
+
+  &__header-subtitle {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $main-dark-grey;
+    margin-top: 5%;
+  }
+}
+
+mat-card-subtitle,
+mat-card-title {
+  text-align: center;
+}
+
+button {
+  width: 187px;
+  height: 52px;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $main-dark-grey;
+}
+
+button:hover {
+  background-color: $main-beige;
+  transition: 1s;
+}
