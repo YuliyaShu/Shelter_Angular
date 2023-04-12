@@ -1,5 +1,36 @@
+### Shelter SPA + Admin 
+
+Clone this repo https://github.com/YuliyaShu/Shelter_Angular.git
+Switch to dev branch, if necessary
+
+```
+git switch dev
+```
+Install dependencies
+
+```
+npm i
+```
+
+Start the app
+
+```
+npm start or ng serve
+```
+
+You can find the app here http://localhost:4200/
+
+
+**!!! Please, wait for the first response from the server about 3-4 minutes. Try to solve a problem with "falling asleeping" of deployed app on Render.**
+
+**Deploy**: 
+https://shelter-angular.netlify.app/
+https://shelter-angular.netlify.app/admin
+Min resolution: 1280 px
+
 BackEnd API https://shelter-qnc2.onrender.com/pets
 BackEnd API documentation https://shelter-qnc2.onrender.com/api
+
 
 
 # ShelterAngular
