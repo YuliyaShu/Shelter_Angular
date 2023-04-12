@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
 
 @Component({
   selector: 'app-add-pet-button',
@@ -6,7 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-pet-button.component.scss']
 })
 export class AddPetButtonComponent {
-  addPet() {
-    return null;
+  constructor(public dialog: MatDialog) {}
+  openDialog() {
+    this.dialog.open(AddPetDialogComponent);
   }
 }

@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Add a new Pet to database</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput required focus [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Animal type</mat-label>
+      <input matInput required [(ngModel)]="animalType">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Breed</mat-label>
+      <input matInput required [(ngModel)]="breed">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput required [(ngModel)]="description">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput required [(ngModel)]="age">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Inoculations</mat-label>
+      <input matInput [(ngModel)]="inoculations">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Diseases</mat-label>
+      <input matInput [(ngModel)]="diseases">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Parasites</mat-label>
+      <input matInput [(ngModel)]="parasites">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="addPet()" [mat-dialog-close]="true" cdkFocusInitial >Add Pet</button>
+</mat-dialog-actions>
