@@ -7,7 +7,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { IntroComponent } from './intro/intro.component';
 import { AboutComponent } from './about/about.component';
-import { PetsModule } from 'src/app/shared/pets/pets.module';
+import { PetsModule } from '../common/pets/pets.module';
 
 
 @NgModule({
