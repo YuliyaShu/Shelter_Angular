@@ -12,18 +12,20 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { MainModule } from './features/main/main.module';
 import { PetsModule } from './features/common/pets/pets.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     MainModule,
     AdminModule,
     PetsModule,
+    SharedModule,
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,

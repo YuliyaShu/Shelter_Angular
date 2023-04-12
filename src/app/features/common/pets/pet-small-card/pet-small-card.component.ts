@@ -20,7 +20,7 @@ export class PetSmallCardComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(PetBigCardComponent, {
+    this.dialog.open(PetBigCardComponent, {
       data: {
         name: this.name,
         animalType: this.animalType,
@@ -31,10 +31,6 @@ export class PetSmallCardComponent {
         diseases: this.diseases,
         parasites: this.parasites,
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
