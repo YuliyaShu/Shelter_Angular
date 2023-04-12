@@ -16,6 +16,7 @@ export class PetSmallCardComponent {
   @Input() inoculations = '';
   @Input() diseases = '';
   @Input() parasites = '';
+  @Input() _id = {};
 
   constructor(public dialog: MatDialog) {}
 
@@ -30,6 +31,7 @@ export class PetSmallCardComponent {
         inoculations: this.inoculations,
         diseases: this.diseases,
         parasites: this.parasites,
+        id: this._id,
       }
     });
   }

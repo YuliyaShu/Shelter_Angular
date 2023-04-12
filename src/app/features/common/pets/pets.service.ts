@@ -43,7 +43,7 @@ export class PetsService {
   }
 
   deletePet(id: string) {
-    this.http.delete(this.rootUrl, { params: { id: id } })
+    return this.http.delete(this.rootUrl, { params: { id: id } })
     .pipe(
       tap((res) => console.log('🚀 ~ deletePet ~ res:', res))
     );

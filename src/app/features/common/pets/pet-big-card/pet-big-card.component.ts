@@ -1,6 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PetsService } from '../pets.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from 'src/app/shared/snack-bar/snack-bar.component';
+import { CONSTANTS } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-pet-big-card',
@@ -18,8 +22,9 @@ export class PetBigCardComponent implements OnInit {
     inoculations: string;
     diseases: string;
     parasites: string;
+    id: string;
   },
-  private router: Router) { }
+  private router: Router, private petsService: PetsService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.isAdminRoute = (this.router.url === '/admin');
@@ -29,7 +34,15 @@ export class PetBigCardComponent implements OnInit {
     return "Edit pet method result is here";
   }
 
-  deletePet() {
-    return "Delete pet method result is here";
+  deletePet(id: string) {
+    console.log(this.data)
+    return this.petsService.deletePet(id).subscribe((res) => {
+    if (res) {
+      const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
+          data: 'Deleted successfully!',
+          duration: CONSTANTS.DURATION_IN_SECONDS * 500,
+        });
+        snackBarRef.afterDismissed().subscribe(() => window.location.reload())
+    }});
   }
 }

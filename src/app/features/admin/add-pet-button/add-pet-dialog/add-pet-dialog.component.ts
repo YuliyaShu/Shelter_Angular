@@ -4,6 +4,7 @@ import { PetsService } from 'src/app/features/common/pets/pets.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from 'src/app/shared/snack-bar/snack-bar.component';
 import { CONSTANTS } from 'src/app/shared/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-pet-dialog',
@@ -35,10 +36,11 @@ export class AddPetDialogComponent {
     }
     return this.petsService.addPet(addPetRequestBody).subscribe(res => {
       if (res) {
-        this.snackBar.openFromComponent(SnackBarComponent, {
+        const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
             data: 'Added successfully!',
-            duration: CONSTANTS.DURATION_IN_SECONDS * 1000,
-          })
+            duration: CONSTANTS.DURATION_IN_SECONDS * 500,
+          });
+          snackBarRef.afterDismissed().subscribe(() => window.location.reload())
       }
     });
   }
