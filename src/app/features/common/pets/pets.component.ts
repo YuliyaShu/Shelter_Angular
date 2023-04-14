@@ -22,7 +22,6 @@ export class PetsComponent implements OnInit{
   constructor(private petsService: PetsService) {}
 
   ngOnInit(): void {
-    console.log(this.petsService.getAllPets().subscribe())
     this.petsService.getAllPets().subscribe((allPetsValue) => {
       this.pets = allPetsValue;
       return allPetsValue;
