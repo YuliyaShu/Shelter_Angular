@@ -35,7 +35,6 @@ export class PetBigCardComponent implements OnInit {
   }
 
   deletePet(id: string) {
-    console.log(this.data)
     return this.petsService.deletePet(id).subscribe((res) => {
     if (res) {
       const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
