@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -9,7 +10,8 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
     SnackBarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }

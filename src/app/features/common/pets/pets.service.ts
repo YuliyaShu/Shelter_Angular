@@ -48,5 +48,4 @@ export class PetsService {
       tap((res) => console.log('🚀 ~ deletePet ~ res:', res))
     );
   }
-
 }

@@ -1,5 +1,5 @@
 <app-pet-small-card
-  *ngFor="let pet of pets"
+  *ngFor="let pet of pets$ | async"
   [name]="pet.name || defaultName"
   [animalType]="pet.animalType || defaultType"
   [breed]="pet.breed || defaultBreed"

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
 import { Pet } from './interfaces/Pet';
 import { CONSTANTS } from 'src/app/shared/constants';
+import { Observable, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-pets',
@@ -9,7 +10,7 @@ import { CONSTANTS } from 'src/app/shared/constants';
   styleUrls: ['./pets.component.scss']
 })
 export class PetsComponent implements OnInit{
-  pets: Pet[] = [];
+  pets$ = new Observable<Pet[]>();
   defaultName = CONSTANTS.PET_DEFAULT_NAME;
   defaultType = CONSTANTS.PET_DEFAULT_TYPE;
   defaultBreed = CONSTANTS.PET_DEFAULT_BREED;
@@ -22,11 +23,11 @@ export class PetsComponent implements OnInit{
   constructor(private petsService: PetsService) {}
 
   ngOnInit(): void {
-    this.petsService.getAllPets().subscribe((allPetsValue) => {
-      this.pets = allPetsValue;
-      return allPetsValue;
-    })
+    this.pets$ = this.petsService.getAllPets()
+      .pipe(
+        catchError((err) => {
+        throw new Error(`There is an error: ${err}`)
+      })
+    )
   }
-
-
 }
