@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
-import { Pet } from './interfaces/Pet';
 import { CONSTANTS } from 'src/app/shared/constants';
 import { Observable, catchError } from 'rxjs';
+import { Pet } from './interfaces/Pet';
 
 @Component({
   selector: 'app-pets',
@@ -23,6 +23,7 @@ export class PetsComponent implements OnInit{
   constructor(private petsService: PetsService) {}
 
   ngOnInit(): void {
+    console.log(this.petsService.pets$);
     this.pets$ = this.petsService.getAllPets()
       .pipe(
         catchError((err) => {

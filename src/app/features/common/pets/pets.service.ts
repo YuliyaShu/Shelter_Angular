@@ -10,15 +10,17 @@ import { UpdatePetRequestBody } from './interfaces/UpdatePetRequestBody';
   providedIn: 'root'
 })
 export class PetsService {
+  pets$ = this.getAllPets();
   rootUrl = CONSTANTS.API_URL;
 
   constructor(private http: HttpClient) { }
 
+
   getAllPets() {
-    return this.http.get<Pet[]>(this.rootUrl)
+    const allPets = this.http.get<Pet[]>(this.rootUrl)
     .pipe(
-      tap((res) => console.log('🚀 ~ getAllPets ~ res:', res))
-    );
+      tap((res) => console.log('🚀 ~ getAllPets ~ res:', res)));
+    return allPets;
   }
 
   getPetById(id: string) {

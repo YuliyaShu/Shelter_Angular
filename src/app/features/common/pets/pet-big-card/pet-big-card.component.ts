@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PetsService } from '../pets.service';
 import { SnackBarService } from 'src/app/shared/snack-bar/snack-bar.service';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-pet-big-card',
@@ -11,6 +12,7 @@ import { SnackBarService } from 'src/app/shared/snack-bar/snack-bar.service';
 })
 export class PetBigCardComponent implements OnInit {
   isAdminRoute = false;
+  deletedPet$ = new Observable();
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
     name: string;
     animalType: string;
@@ -33,7 +35,11 @@ export class PetBigCardComponent implements OnInit {
   }
 
   deletePet(id: string) {
-    return this.petsService.deletePet(id).subscribe((res) => {
-    if (res) this.snackBarService.callSnackBar('Deleted successfully!');});
+    this.deletedPet$ = this.petsService.deletePet(id)
+      .pipe(
+        tap((res) => {
+          if (res) this.snackBarService.callSnackBar('Deleted successfully!');
+        })
+      )
   }
 }

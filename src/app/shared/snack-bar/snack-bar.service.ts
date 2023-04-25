@@ -15,6 +15,11 @@ export class SnackBarService {
       data: text,
       duration: CONSTANTS.DURATION_IN_SECONDS * 500,
     });
-    snackBarRef.afterDismissed().subscribe(() => window.location.reload())
+
+    const snackBarRefSubscriber=  snackBarRef.afterDismissed().subscribe(() => {
+      this.snackBar.dismiss();
+      snackBarRefSubscriber.unsubscribe();
+      window.location.reload();
+    })
   }
 }
