@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AddPetRequestBody } from 'src/app/features/common/pets/interfaces/AddPetRequestBody';
-import { PetsService } from 'src/app/features/common/pets/pets.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-pet-dialog',
@@ -18,8 +16,6 @@ export class AddPetDialogComponent {
   inoculations = '';
   diseases = '';
   parasites = '';
-
-  constructor(private petsService: PetsService, private snackBar: MatSnackBar) {}
 
   addPet() {
     const addPetRequestBody: AddPetRequestBody = {
