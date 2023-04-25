@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AddPetRequestBody } from 'src/app/features/common/pets/interfaces/AddPetRequestBody';
 import { PetsService } from 'src/app/features/common/pets/pets.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from 'src/app/shared/snack-bar/snack-bar.component';
-import { CONSTANTS } from 'src/app/shared/constants';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-pet-dialog',
@@ -12,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-pet-dialog.component.scss']
 })
 export class AddPetDialogComponent {
+  @Output() newPetData = new EventEmitter<AddPetRequestBody>();
   name = '';
   animalType = '';
   breed = '';
@@ -34,14 +32,6 @@ export class AddPetDialogComponent {
       diseases: this.diseases,
       parasites: this.parasites
     }
-    return this.petsService.addPet(addPetRequestBody).subscribe(res => {
-      if (res) {
-        const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
-            data: 'Added successfully!',
-            duration: CONSTANTS.DURATION_IN_SECONDS * 500,
-          });
-          snackBarRef.afterDismissed().subscribe(() => window.location.reload())
-      }
-    });
+    this.newPetData.emit(addPetRequestBody);
   }
 }
