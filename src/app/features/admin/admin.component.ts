@@ -14,7 +14,6 @@ export class AdminComponent {
   constructor(private petsService: PetsService, private snackBarService: SnackBarService) {}
 
   addPet(petRequestBody: AddPetRequestBody) {
-
     this.pet$ = this.petsService.addPet(petRequestBody)
     .pipe(
       tap(res => {
@@ -28,7 +27,4 @@ export class AdminComponent {
     )
     return this.pet$;
   }
-
-
-
 }
