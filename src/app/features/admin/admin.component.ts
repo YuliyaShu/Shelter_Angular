@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AddPetRequestBody } from '../common/pets/interfaces/AddPetRequestBody';
 import { PetsService } from '../common/pets/pets.service';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { SnackBarService } from 'src/app/shared/snack-bar/snack-bar.service';
+import { Pet } from '../common/pets/interfaces/Pet';
 
 @Component({
   selector: 'app-admin',
@@ -10,19 +11,19 @@ import { SnackBarService } from 'src/app/shared/snack-bar/snack-bar.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  pet$ = new Observable();
+  pet$ = new Observable<Pet>();
   constructor(private petsService: PetsService, private snackBarService: SnackBarService) {}
 
-  addPet(petRequestBody: AddPetRequestBody) {
+  addPet(petRequestBody: AddPetRequestBody): Observable<Pet> {
     this.pet$ = this.petsService.addPet(petRequestBody)
     .pipe(
-      tap(res => {
+      tap((res: Pet) => {
         if (res) this.snackBarService.callSnackBar('Added successfully!');
-        return res;
+
       }),
-      catchError((err) => {
+      catchError(() => {
         this.snackBarService.callSnackBar('Something went wrong! Please try later!');
-        return err;
+        return of();
       })
     )
     return this.pet$;

@@ -4,7 +4,7 @@ export interface AddPetRequestBody {
   breed: string;
   description: string;
   age: string;
-  inoculations?: string;
-  diseases?: string;
-  parasites?: string;
+  inoculations: string | null;
+  diseases: string | null
+  parasites: string | null;
 }

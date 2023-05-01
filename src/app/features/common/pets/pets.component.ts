@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
 import { CONSTANTS } from 'src/app/shared/constants';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { Pet } from './interfaces/Pet';
+import { DeletePetResponse } from './interfaces/DeletePetResponse';
+import { SnackBarService } from 'src/app/shared/snack-bar/snack-bar.service';
+import { PetWithStringId } from './interfaces/PetWithStringId';
+import { UpdatePetResponse } from './interfaces/UpdatePetResponse';
 
 @Component({
   selector: 'app-pets',
@@ -11,24 +15,47 @@ import { Pet } from './interfaces/Pet';
 })
 export class PetsComponent implements OnInit{
   pets$ = new Observable<Pet[]>();
-  defaultName = CONSTANTS.PET_DEFAULT_NAME;
-  defaultType = CONSTANTS.PET_DEFAULT_TYPE;
-  defaultBreed = CONSTANTS.PET_DEFAULT_BREED;
-  defaultDescription = CONSTANTS.PET_DEFAULT_DESCRIPTION;
-  defaultAge = CONSTANTS.PET_DEFAULT_AGE;
-  defaultDiseases = CONSTANTS.PET_DEFAULT_DISEASES;
-  defaultInoculations = CONSTANTS.PET_DEFAULT_INOCULATIONS;
-  defaultParasites = CONSTANTS.PET_DEFAULT_PARASITES;
+  deletedPet$ = new Observable<DeletePetResponse>();
+  updatedPet$ = new Observable<UpdatePetResponse>;
+  defaultPet = CONSTANTS.PET_DEFAULT;
 
-  constructor(private petsService: PetsService) {}
+  constructor(private petsService: PetsService, private snackBarService: SnackBarService) {}
 
   ngOnInit(): void {
-    console.log(this.petsService.pets$);
     this.pets$ = this.petsService.getAllPets()
       .pipe(
         catchError((err) => {
         throw new Error(`There is an error: ${err}`)
       })
     )
+  }
+
+  deletePet(id: string): Observable<DeletePetResponse> {
+    this.deletedPet$ = this.petsService.deletePet(id)
+      .pipe(
+        tap((res: DeletePetResponse) => {
+          if (res) this.snackBarService.callSnackBar('Deleted successfully!');
+        }),
+        catchError(() => {
+          this.snackBarService.callSnackBar('Something went wrong! Please try later!');
+          return of();
+        })
+      )
+    return this.deletedPet$;
+  }
+
+  updatePet(newPetData: PetWithStringId): Observable<UpdatePetResponse> {
+    this.updatedPet$ = this.petsService.updatePet(newPetData.id, newPetData)
+    .pipe(
+      tap((res) => {
+        console.log(res);
+        if (res) this.snackBarService.callSnackBar('Updated successfully!');
+      }),
+      catchError(() => {
+        this.snackBarService.callSnackBar('Something went wrong! Please try later!');
+        return of();
+      })
+    )
+    return this.updatedPet$;
   }
 }

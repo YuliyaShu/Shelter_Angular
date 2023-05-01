@@ -16,8 +16,7 @@ export class SnackBarService {
       duration: CONSTANTS.DURATION_IN_SECONDS * 500,
     });
 
-    const snackBarRefSubscriber=  snackBarRef.afterDismissed().subscribe(() => {
-      this.snackBar.dismiss();
+    const snackBarRefSubscriber = snackBarRef.afterDismissed().subscribe(() => {
       snackBarRefSubscriber.unsubscribe();
       window.location.reload();
     })

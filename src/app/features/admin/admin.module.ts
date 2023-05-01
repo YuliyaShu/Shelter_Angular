@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers:[
     {provide: MatDialogRef, useValue:{}}
