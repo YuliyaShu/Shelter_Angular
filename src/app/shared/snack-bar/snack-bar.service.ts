@@ -17,7 +17,6 @@ export class SnackBarService {
     });
 
     const snackBarRefSubscriber = snackBarRef.afterDismissed().subscribe(() => {
-      this.snackBar.dismiss();
       snackBarRefSubscriber.unsubscribe();
       window.location.reload();
     })

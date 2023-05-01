@@ -21,7 +21,8 @@ export class PetsService {
   getAllPets(): Observable<Pet[]> {
     const allPets = this.http.get<Pet[]>(this.rootUrl)
     .pipe(
-      tap((res: Pet[]) => console.log('🚀 ~ getAllPets ~ res:', res)));
+      tap((res: Pet[]) => console.log('🚀 ~ getAllPets ~ res:', res))
+    );
     return allPets;
   }
 
