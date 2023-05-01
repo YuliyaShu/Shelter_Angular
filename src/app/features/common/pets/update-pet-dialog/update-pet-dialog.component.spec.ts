@@ -1,26 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PetBigCardComponent } from './pet-big-card.component';
+import { UpdatePetDialogComponent } from './update-pet-dialog.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('PetBigCardComponent', () => {
-  let component: PetBigCardComponent;
-  let fixture: ComponentFixture<PetBigCardComponent>;
-  let dialogRef: MatDialogRef<PetBigCardComponent>;
+describe('UpdatePetDialogComponent', () => {
+  let component: UpdatePetDialogComponent;
+  let fixture: ComponentFixture<UpdatePetDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetBigCardComponent ],
+      declarations: [ UpdatePetDialogComponent ],
       imports: [
         CommonModule,
         FormsModule,
@@ -36,13 +35,12 @@ describe('PetBigCardComponent', () => {
         BrowserAnimationsModule
       ],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: dialogRef }
+        { provide: MAT_DIALOG_DATA, useValue: {} }
       ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PetBigCardComponent);
+    fixture = TestBed.createComponent(UpdatePetDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

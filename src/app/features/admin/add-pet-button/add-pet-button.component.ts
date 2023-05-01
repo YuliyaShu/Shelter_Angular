@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddPetDialogComponent } from '../add-pet-dialog/add-pet-dialog.component';
 import { AddPetRequestBody } from '../../common/pets/interfaces/AddPetRequestBody';
 
 @Component({
   selector: 'app-add-pet-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './add-pet-button.component.html',
   styleUrls: ['./add-pet-button.component.scss']
 })

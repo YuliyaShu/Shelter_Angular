@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CONSTANTS } from 'src/app/shared/constants';
 import { Pet } from './interfaces/Pet';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AddPetRequestBody } from './interfaces/AddPetRequestBody';
 import { UpdatePetRequestBody } from './interfaces/UpdatePetRequestBody';
+import { DeletePetResponse } from './interfaces/DeletePetResponse';
+import { UpdatePetResponse } from './interfaces/UpdatePetResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -16,38 +18,40 @@ export class PetsService {
   constructor(private http: HttpClient) { }
 
 
-  getAllPets() {
+  getAllPets(): Observable<Pet[]> {
     const allPets = this.http.get<Pet[]>(this.rootUrl)
     .pipe(
-      tap((res) => console.log('🚀 ~ getAllPets ~ res:', res)));
+      tap((res: Pet[]) => console.log('🚀 ~ getAllPets ~ res:', res)));
     return allPets;
   }
 
-  getPetById(id: string) {
-    return this.http.get<Pet>(this.rootUrl, { params: {id: id} })
+  getPetById(id: string): Observable<Pet> {
+    return this.http.get<Pet>(this.rootUrl, { params: {_id: id} })
     .pipe(
-      tap((res) => console.log('🚀 ~ getPetById ~ res:', res))
+      tap((res: Pet) => console.log('🚀 ~ getPetById ~ res:', res))
     );
   }
 
-  addPet(body: AddPetRequestBody) {
-    return this.http.post(this.rootUrl, body)
+  addPet(body: AddPetRequestBody): Observable<Pet> {
+    return this.http.post<Pet>(this.rootUrl, body)
     .pipe(
-      tap((res) => console.log('🚀 ~ addPet ~ res:', res))
+      tap((res: Pet) => console.log('🚀 ~ addPet ~ res:', res))
     );
   }
 
-  updatePet(id: string, body: UpdatePetRequestBody) {
-    return this.http.patch(this.rootUrl, body, { params: { id: id }})
+  updatePet(id: string, body: UpdatePetRequestBody): Observable<UpdatePetResponse> {
+    console.log('im in update')
+    return this.http.patch<UpdatePetResponse>(this.rootUrl, body, { params: { _id: id }})
     .pipe(
-      tap((res) => console.log('🚀 ~ updatePet ~ res:', res))
+      tap((res: UpdatePetResponse) => console.log('🚀 ~ updatePet ~ res:', res))
     );
+
   }
 
-  deletePet(id: string) {
-    return this.http.delete(this.rootUrl, { params: { _id: id } })
+  deletePet(id: string): Observable<DeletePetResponse> {
+    return this.http.delete<DeletePetResponse>(this.rootUrl, { params: { _id: id } })
     .pipe(
-      tap((res) => console.log('🚀 ~ deletePet ~ res:', res))
+      tap((res: DeletePetResponse) => console.log('🚀 ~ deletePet ~ res:', res))
     );
   }
 }

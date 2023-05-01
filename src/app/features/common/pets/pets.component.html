@@ -1,13 +1,20 @@
 <app-pet-small-card
-  *ngFor="let pet of pets$ | async"
-  [name]="pet.name || defaultName"
-  [animalType]="pet.animalType || defaultType"
-  [breed]="pet.breed || defaultBreed"
-  [description]="pet.description || defaultDescription"
-  [age]="pet.age || defaultAge"
-  [inoculations]="pet.inoculations || defaultInoculations"
-  [diseases]="pet.diseases || defaultDiseases"
-  [parasites]="pet.parasites || defaultParasites"
-  [_id]="pet._id"
-></app-pet-small-card>
+  (deletedPetId)="deletePet($event)"
+  (updatedPetData)="updatePet($event)"
+  *ngFor="let petUnit of pets$ | async"
+  [pet]="{
+    name: petUnit.name || defaultPet.NAME,
+    animalType: petUnit.animalType || defaultPet.TYPE,
+    breed: petUnit.breed || defaultPet.BREED,
+    description: petUnit.description || defaultPet.DESCRIPTION,
+    age: petUnit.age || defaultPet.AGE,
+    inoculations: petUnit.inoculations || defaultPet.INOCULATIONS,
+    diseases: petUnit.diseases || defaultPet.DISEASES,
+    parasites: petUnit.parasites || defaultPet.PARASITES,
+    _id: petUnit._id
+  }"
+>
+  <div *ngIf="deletedPet$ | async"></div>
+  <div *ngIf="updatedPet$ | async"></div>
+</app-pet-small-card>
 

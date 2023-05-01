@@ -1,32 +1,36 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { AddPetRequestBody } from 'src/app/features/common/pets/interfaces/AddPetRequestBody';
 
 @Component({
   selector: 'app-add-pet-dialog',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './add-pet-dialog.component.html',
   styleUrls: ['./add-pet-dialog.component.scss']
 })
 export class AddPetDialogComponent {
   @Output() newPetData = new EventEmitter<AddPetRequestBody>();
-  name = '';
-  animalType = '';
-  breed = '';
-  description = '';
-  age = '';
-  inoculations = '';
-  diseases = '';
-  parasites = '';
+  newPet: AddPetRequestBody = {
+    name: '',
+    animalType: '',
+    breed: '',
+    description: '',
+    age: '',
+    inoculations: '',
+    diseases: '',
+    parasites: '',
+  }
+
 
   addPet() {
     const addPetRequestBody: AddPetRequestBody = {
-      name: this.name,
-      animalType: this.animalType,
-      breed: this.breed,
-      description: this.description,
-      age: this.age,
-      inoculations: this.inoculations,
-      diseases: this.diseases,
-      parasites: this.parasites
+      name: this.newPet.name,
+      animalType: this.newPet.animalType,
+      breed: this.newPet.breed,
+      description: this.newPet.description,
+      age: this.newPet.age,
+      inoculations: this.newPet.inoculations,
+      diseases: this.newPet.diseases,
+      parasites: this.newPet.parasites
     }
     this.newPetData.emit(addPetRequestBody);
   }
