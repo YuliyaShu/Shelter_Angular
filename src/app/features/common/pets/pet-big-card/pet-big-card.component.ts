@@ -25,27 +25,17 @@ export class PetBigCardComponent implements OnInit {
     this.isAdminRoute = (this.router.url === '/admin');
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialogRef = this.dialog.open(UpdatePetDialogComponent, {
-      data: {
-        name: this.data.name,
-        animalType: this.data.animalType,
-        breed: this.data.breed,
-        description: this.data.description,
-        age: this.data.age,
-        inoculations: this.data.inoculations,
-        diseases: this.data.diseases,
-        parasites: this.data.parasites,
-        id: this.data.id,
-      }
+      data: { ...this.data }
     });
-    const dialogSubmitSubscription = this.dialogRef.componentInstance.updatedPetData.subscribe(result => {
+    const dialogSubmitSubscription = this.dialogRef.componentInstance.updatedPetData.subscribe((result: PetWithStringId) => {
       this.updatedPetData.emit(result);
       dialogSubmitSubscription.unsubscribe();
     })
   }
 
-  deletePet(id: string) {
+  deletePet(id: string): void {
     this.deletedPetId.emit(id);
   }
 }

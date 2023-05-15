@@ -11,10 +11,12 @@ import { Pet } from '../common/pets/interfaces/Pet';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  pet$ = new Observable<Pet>();
-  constructor(private petsService: PetsService, private snackBarService: SnackBarService) {}
+  pet$:Observable<Pet | null>;
+  constructor(private petsService: PetsService, private snackBarService: SnackBarService) {
+    this.pet$ = of(null);
+  }
 
-  addPet(petRequestBody: AddPetRequestBody): Observable<Pet> {
+  addPet(petRequestBody: AddPetRequestBody): Observable<Pet | null> {
     this.pet$ = this.petsService.addPet(petRequestBody)
     .pipe(
       tap((res: Pet) => {

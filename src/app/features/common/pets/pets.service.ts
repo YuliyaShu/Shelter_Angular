@@ -12,18 +12,17 @@ import { UpdatePetResponse } from './interfaces/UpdatePetResponse';
   providedIn: 'root'
 })
 export class PetsService {
-  pets$ = this.getAllPets();
-  rootUrl = CONSTANTS.API_URL;
+  pets$: Observable<Pet[]> = this.getAllPets();
+  rootUrl: string = CONSTANTS.API_URL;
 
   constructor(private http: HttpClient) { }
 
 
   getAllPets(): Observable<Pet[]> {
-    const allPets = this.http.get<Pet[]>(this.rootUrl)
+    return this.http.get<Pet[]>(this.rootUrl)
     .pipe(
       tap((res: Pet[]) => console.log('🚀 ~ getAllPets ~ res:', res))
     );
-    return allPets;
   }
 
   getPetById(id: string): Observable<Pet> {
@@ -41,7 +40,6 @@ export class PetsService {
   }
 
   updatePet(id: string, body: UpdatePetRequestBody): Observable<UpdatePetResponse> {
-    console.log('im in update')
     return this.http.patch<UpdatePetResponse>(this.rootUrl, body, { params: { _id: id }})
     .pipe(
       tap((res: UpdatePetResponse) => console.log('🚀 ~ updatePet ~ res:', res))

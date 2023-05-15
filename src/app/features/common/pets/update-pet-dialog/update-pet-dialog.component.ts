@@ -24,7 +24,7 @@ export class UpdatePetDialogComponent {
     id: this.data.id
   }
 
-  updatePet() {
+  updatePet(): void {
     const updatedPetRequestBody: PetWithStringId = {
       name: this.updatedPet.name,
       animalType: this.updatedPet.animalType,

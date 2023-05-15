@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { CONSTANTS } from '../constants';
 import { SnackBarComponent } from './snack-bar.component';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,13 @@ export class SnackBarService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  callSnackBar(text: string) {
-    const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
+  callSnackBar(text: string): void {
+    const snackBarRef: MatSnackBarRef<SnackBarComponent> = this.snackBar.openFromComponent(SnackBarComponent, {
       data: text,
       duration: CONSTANTS.DURATION_IN_SECONDS * 500,
     });
 
-    const snackBarRefSubscriber = snackBarRef.afterDismissed().subscribe(() => {
+    const snackBarRefSubscriber: Subscription = snackBarRef.afterDismissed().subscribe(() => {
       snackBarRefSubscriber.unsubscribe();
       window.location.reload();
     })
