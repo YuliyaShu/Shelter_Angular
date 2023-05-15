@@ -49,7 +49,7 @@ export class PetsComponent implements OnInit{
   }
 
   updatePet(newPetData: PetWithStringId): Observable<UpdatePetResponse> {
-    this.updatedPet$ = this.petsService.updatePet(newPetData.id, newPetData)
+    this.updatedPet$ = this.petsService.updatePet(newPetData._id, newPetData)
     .pipe(
       tap((res) => {
         if (res) this.snackBarService.callSnackBar('Updated successfully!');
