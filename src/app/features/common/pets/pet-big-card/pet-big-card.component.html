@@ -35,7 +35,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button *ngIf="isAdminRoute" (click)="openDialog()">Edit</button>
-  <button mat-button *ngIf="isAdminRoute" (click)="deletePet(data.id)">Delete</button>
+  <button mat-button *ngIf="isAdminRoute" (click)="deletePet(data._id)">Delete</button>
   <button mat-button mat-dialog-close cdkFocusInitial>Close</button>
   <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Adopt an animal</button> -->
 </mat-dialog-actions>

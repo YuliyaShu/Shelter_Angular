@@ -28,6 +28,7 @@ export class PetBigCardComponent implements OnInit {
   openDialog(): void {
     this.dialogRef = this.dialog.open(UpdatePetDialogComponent, {
       data: { ...this.data }
+
     });
     const dialogSubmitSubscription = this.dialogRef.componentInstance.updatedPetData.subscribe((result: PetWithStringId) => {
       this.updatedPetData.emit(result);
