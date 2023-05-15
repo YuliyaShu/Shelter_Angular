@@ -21,17 +21,8 @@ export class AddPetDialogComponent {
   }
 
 
-  addPet() {
-    const addPetRequestBody: AddPetRequestBody = {
-      name: this.newPet.name,
-      animalType: this.newPet.animalType,
-      breed: this.newPet.breed,
-      description: this.newPet.description,
-      age: this.newPet.age,
-      inoculations: this.newPet.inoculations,
-      diseases: this.newPet.diseases,
-      parasites: this.newPet.parasites
-    }
+  addPet(): void {
+    const addPetRequestBody: AddPetRequestBody = { ...this.newPet }
     this.newPetData.emit(addPetRequestBody);
   }
 }

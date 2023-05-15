@@ -16,12 +16,16 @@ import { UpdatePetResponse } from './interfaces/UpdatePetResponse';
 export class PetsComponent implements OnInit{
   pets$ = new Observable<Pet[]>();
   deletedPet$ = new Observable<DeletePetResponse>();
-  updatedPet$ = new Observable<UpdatePetResponse>;
+  updatedPet$ = new Observable<UpdatePetResponse>();
   defaultPet = CONSTANTS.PET_DEFAULT;
 
   constructor(private petsService: PetsService, private snackBarService: SnackBarService) {}
 
   ngOnInit(): void {
+    this.loadPets();
+  }
+
+  loadPets(): void {
     this.pets$ = this.petsService.getAllPets()
       .pipe(
         catchError((err) => {
@@ -38,7 +42,7 @@ export class PetsComponent implements OnInit{
         }),
         catchError(() => {
           this.snackBarService.callSnackBar('Something went wrong! Please try later!');
-          return of();
+          return of() as Observable<DeletePetResponse>;
         })
       )
     return this.deletedPet$;
@@ -48,12 +52,11 @@ export class PetsComponent implements OnInit{
     this.updatedPet$ = this.petsService.updatePet(newPetData.id, newPetData)
     .pipe(
       tap((res) => {
-        console.log(res);
         if (res) this.snackBarService.callSnackBar('Updated successfully!');
       }),
       catchError(() => {
         this.snackBarService.callSnackBar('Something went wrong! Please try later!');
-        return of();
+        return of() as Observable<UpdatePetResponse>;
       })
     )
     return this.updatedPet$;

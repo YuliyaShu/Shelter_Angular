@@ -25,26 +25,19 @@ export class PetSmallCardComponent {
   @Output() deletedPetId = new EventEmitter<string>;
   @Output() updatedPetData = new EventEmitter<PetWithStringId>;
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PetBigCardComponent>) {}
-  openDialog() {
-    this.dialogRef = this.dialog.open(PetBigCardComponent, {
-      data: {
-        name: this.pet.name,
-        animalType: this.pet.animalType,
-        breed: this.pet.breed,
-        description: this.pet.description,
-        age: this.pet.age,
-        inoculations: this.pet.inoculations,
-        diseases: this.pet.diseases,
-        parasites: this.pet.parasites,
-        id: this.pet._id,
+  constructor(public dialog: MatDialog) {}
+  openDialog(): void {
+    const dialogRef: MatDialogRef<PetBigCardComponent> = this.dialog.open(
+      PetBigCardComponent,
+      {
+        data: { ...this.pet }
       }
-    });
-    const dialogSubscriptionDeleteAction = this.dialogRef.componentInstance.deletedPetId.subscribe(result => {
+    );
+    const dialogSubscriptionDeleteAction = dialogRef.componentInstance.deletedPetId.subscribe(result => {
       this.deletedPetId.emit(result);
       dialogSubscriptionDeleteAction.unsubscribe();
     })
-    const dialogSubscriptionUpdateAction = this.dialogRef.componentInstance.updatedPetData.subscribe(result => {
+    const dialogSubscriptionUpdateAction = dialogRef.componentInstance.updatedPetData.subscribe(result => {
       this.updatedPetData.emit(result);
       dialogSubscriptionUpdateAction.unsubscribe();
     })

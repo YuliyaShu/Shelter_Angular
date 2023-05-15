@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddPetDialogComponent } from '../add-pet-dialog/add-pet-dialog.component';
 import { AddPetRequestBody } from '../../common/pets/interfaces/AddPetRequestBody';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-add-pet-button',
@@ -12,12 +13,13 @@ import { AddPetRequestBody } from '../../common/pets/interfaces/AddPetRequestBod
 export class AddPetButtonComponent {
   @Output() newPetData = new EventEmitter<AddPetRequestBody>;
 
-  constructor (public dialog: MatDialog, public dialogRef: MatDialogRef<AddPetDialogComponent>) {}
-  openDialog() {
-    this.dialogRef = this.dialog.open(AddPetDialogComponent);
-    const dialogSubmitSubscription = this.dialogRef.componentInstance.newPetData.subscribe(result => {
+  constructor (public dialog: MatDialog) {}
+  openDialog(): void {
+    const dialogRef: MatDialogRef<AddPetDialogComponent> = this.dialog.open(AddPetDialogComponent);
+    dialogRef.componentInstance.newPetData
+    .pipe(take(1))
+    .subscribe((result: AddPetRequestBody) => {
       this.newPetData.emit(result);
-      dialogSubmitSubscription.unsubscribe();
     })
   }
 }
