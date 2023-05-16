@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PetsComponent', () => {
   let component: PetsComponent;
@@ -30,7 +31,8 @@ describe('PetsComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         SharedModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule
       ],
     })
     .compileComponents();

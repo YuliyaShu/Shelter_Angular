@@ -7,6 +7,8 @@ import { DeletePetResponse } from './interfaces/DeletePetResponse';
 import { SnackBarService } from 'src/app/shared/snack-bar/snack-bar.service';
 import { PetWithStringId } from './interfaces/PetWithStringId';
 import { UpdatePetResponse } from './interfaces/UpdatePetResponse';
+import { Router } from '@angular/router';
+import { AddPetRequestBody } from './interfaces/AddPetRequestBody';
 
 @Component({
   selector: 'app-pets',
@@ -18,12 +20,19 @@ export class PetsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   deletedPet$ = new Observable<DeletePetResponse>();
   updatedPet$ = new Observable<UpdatePetResponse>();
+  newPet$ = new Observable<Pet>();
   defaultPet = CONSTANTS.PET_DEFAULT;
+  isAdminRoute = false;
 
-  constructor(private petsService: PetsService, private snackBarService: SnackBarService) {}
+  constructor(
+    private petsService: PetsService,
+    private snackBarService: SnackBarService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadPets();
+    this.isAdminRoute = (this.router.url === '/admin');
   }
 
   ngOnDestroy(): void {
@@ -43,6 +52,23 @@ export class PetsComponent implements OnInit, OnDestroy {
     ).subscribe()
     this.subscriptions.push(subscription);
     console.log('🚀 ~ loadPets ~ subscription:', this.subscriptions);
+  }
+
+  addPet(petRequestBody: AddPetRequestBody): Observable<Pet | null> {
+    this.newPet$ = this.petsService.addPet(petRequestBody)
+    .pipe(
+      tap((res: Pet) => {
+        if (res) {
+          this.snackBarService.callSnackBar('Added successfully!');
+          this.loadPets();
+        }
+      }),
+      catchError(() => {
+        this.snackBarService.callSnackBar('Something went wrong! Please try later!');
+        return of();
+      })
+    )
+    return this.newPet$;
   }
 
   deletePet(id: string): Observable<DeletePetResponse> {

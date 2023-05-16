@@ -10,8 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PetsModule } from '../../common/pets/pets.module';
-import { AdminRoutingModule } from '../admin-routing.module';
+import { AdminRoutingModule } from 'src/app/features/admin/admin-routing.module';
+import { PetsModule } from '../pets.module';
 
 describe('AddPetButtonComponent', () => {
   let component: AddPetButtonComponent;

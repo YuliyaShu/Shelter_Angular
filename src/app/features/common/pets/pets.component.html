@@ -17,6 +17,10 @@
     }"
   >
   </app-pet-small-card>
+  <app-add-pet-button (newPetData)="addPet($event)">
+    <div *ngIf="pets$ | async"></div>
+  </app-add-pet-button>
   <div *ngIf="deletedPet$ | async"></div>
   <div *ngIf="updatedPet$ | async"></div>
+  <div *ngIf="newPet$ | async"></div>
 </ng-container>

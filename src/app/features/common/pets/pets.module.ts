@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddPetButtonComponent } from './add-pet-button/add-pet-button.component';
+import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
 
 @NgModule({
   imports: [
@@ -35,11 +37,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PetSmallCardComponent,
     PetBigCardComponent,
     UpdatePetDialogComponent,
+    AddPetButtonComponent,
+    AddPetDialogComponent,
   ],
   exports: [
     PetsComponent,
     PetSmallCardComponent,
     PetBigCardComponent,
+    UpdatePetDialogComponent,
+    AddPetButtonComponent,
+    AddPetDialogComponent,
   ],
   providers:[
     {provide: MatDialogRef, useValue:{}}

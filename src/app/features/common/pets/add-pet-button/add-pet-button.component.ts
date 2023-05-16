@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddPetDialogComponent } from '../add-pet-dialog/add-pet-dialog.component';
-import { AddPetRequestBody } from '../../common/pets/interfaces/AddPetRequestBody';
 import { take } from 'rxjs';
+import { AddPetRequestBody } from '../interfaces/AddPetRequestBody';
 
 @Component({
   selector: 'app-add-pet-button',
