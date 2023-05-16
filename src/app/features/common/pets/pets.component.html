@@ -17,7 +17,7 @@
     }"
   >
   </app-pet-small-card>
-  <app-add-pet-button (newPetData)="addPet($event)">
+  <app-add-pet-button *ngIf="isAdminRoute" (newPetData)="addPet($event)">
     <div *ngIf="pets$ | async"></div>
   </app-add-pet-button>
   <div *ngIf="deletedPet$ | async"></div>
