@@ -1,20 +1,26 @@
-<app-pet-small-card
-  (deletedPetId)="deletePet($event)"
-  (updatedPetData)="updatePet($event)"
-  *ngFor="let petUnit of pets$ | async"
-  [pet]="{
-    name: petUnit.name || defaultPet.NAME,
-    animalType: petUnit.animalType || defaultPet.TYPE,
-    breed: petUnit.breed || defaultPet.BREED,
-    description: petUnit.description || defaultPet.DESCRIPTION,
-    age: petUnit.age || defaultPet.AGE,
-    inoculations: petUnit.inoculations || defaultPet.INOCULATIONS,
-    diseases: petUnit.diseases || defaultPet.DISEASES,
-    parasites: petUnit.parasites || defaultPet.PARASITES,
-    _id: petUnit._id
-  }"
->
+<ng-container *ngIf="pets$ | async">
+
+  <app-pet-small-card
+    (deletedPetId)="deletePet($event)"
+    (updatedPetData)="updatePet($event)"
+    *ngFor="let petUnit of pets$ | async"
+    [pet]="{
+      name: petUnit.name || defaultPet.NAME,
+      animalType: petUnit.animalType || defaultPet.TYPE,
+      breed: petUnit.breed || defaultPet.BREED,
+      description: petUnit.description || defaultPet.DESCRIPTION,
+      age: petUnit.age || defaultPet.AGE,
+      inoculations: petUnit.inoculations || defaultPet.INOCULATIONS,
+      diseases: petUnit.diseases || defaultPet.DISEASES,
+      parasites: petUnit.parasites || defaultPet.PARASITES,
+      _id: petUnit._id
+    }"
+  >
+  </app-pet-small-card>
+  <app-add-pet-button *ngIf="isAdminRoute" (newPetData)="addPet($event)">
+    <div *ngIf="pets$ | async"></div>
+  </app-add-pet-button>
   <div *ngIf="deletedPet$ | async"></div>
   <div *ngIf="updatedPet$ | async"></div>
-</app-pet-small-card>
-
+  <div *ngIf="newPet$ | async"></div>
+</ng-container>

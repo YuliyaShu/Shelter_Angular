@@ -12,11 +12,9 @@ import { UpdatePetResponse } from './interfaces/UpdatePetResponse';
   providedIn: 'root'
 })
 export class PetsService {
-  pets$: Observable<Pet[]> = this.getAllPets();
   rootUrl: string = CONSTANTS.API_URL;
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   getAllPets(): Observable<Pet[]> {
     return this.http.get<Pet[]>(this.rootUrl)

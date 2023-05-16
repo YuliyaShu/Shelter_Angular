@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdminComponent } from './admin.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
-import { AddPetButtonComponent } from './add-pet-button/add-pet-button.component';
-import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,9 +19,7 @@ describe('AdminComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AdminComponent,
-        AddPetButtonComponent,
-        AddPetDialogComponent
+        AdminComponent
       ],
       imports: [
         CommonModule,
