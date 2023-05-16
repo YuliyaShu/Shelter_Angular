@@ -36,10 +36,12 @@ export class PetSmallCardComponent {
     const dialogSubscriptionDeleteAction = dialogRef.componentInstance.deletedPetId.subscribe(result => {
       this.deletedPetId.emit(result);
       dialogSubscriptionDeleteAction.unsubscribe();
+      dialogRef.close();
     })
     const dialogSubscriptionUpdateAction = dialogRef.componentInstance.updatedPetData.subscribe(result => {
       this.updatedPetData.emit(result);
       dialogSubscriptionUpdateAction.unsubscribe();
+      dialogRef.close();
     })
   }
 }

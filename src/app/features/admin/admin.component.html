@@ -1,9 +1,9 @@
 <div class="admin">
   <h3 class="admin__header">Administration <br> tool</h3>
   <div class="admin__cards">
-    <app-pets></app-pets>
+      <app-pets></app-pets>
     <app-add-pet-button (newPetData)="addPet($event)">
-      <div *ngIf="pet$ | async"></div>
+      <div *ngIf="pets$ | async"></div>
     </app-add-pet-button>
   </div>
 </div>

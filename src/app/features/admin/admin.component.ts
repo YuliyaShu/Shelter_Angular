@@ -11,13 +11,14 @@ import { Pet } from '../common/pets/interfaces/Pet';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  pet$:Observable<Pet | null>;
+
+  pets$:Observable<Pet | null>;
   constructor(private petsService: PetsService, private snackBarService: SnackBarService) {
-    this.pet$ = of(null);
+    this.pets$ = of(null);
   }
 
   addPet(petRequestBody: AddPetRequestBody): Observable<Pet | null> {
-    this.pet$ = this.petsService.addPet(petRequestBody)
+    this.pets$ = this.petsService.addPet(petRequestBody)
     .pipe(
       tap((res: Pet) => {
         if (res) this.snackBarService.callSnackBar('Added successfully!');
@@ -28,6 +29,6 @@ export class AdminComponent {
         return of();
       })
     )
-    return this.pet$;
+    return this.pets$;
   }
 }
