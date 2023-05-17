@@ -4,6 +4,7 @@ import { PetBigCardComponent } from '../pet-big-card/pet-big-card.component';
 import { Pet } from '../interfaces/Pet';
 import { PetWithStringId } from '../interfaces/PetWithStringId';
 import { createApi } from 'unsplash-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pet-small-card',
@@ -28,7 +29,7 @@ export class PetSmallCardComponent implements OnInit {
 
   unsplash = createApi(
     {
-      accessKey: '9ci4sK9TMqPpRCJb5ZeGYnhgn4Kp7uIkBEaB18dU_AE'
+      accessKey: environment.UNSPLASH_KEY,
     }
   );
   photoUrl = '';
