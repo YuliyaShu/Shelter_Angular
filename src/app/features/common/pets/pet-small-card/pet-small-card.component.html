@@ -1,5 +1,5 @@
 <mat-card class="pet-small-card">
-  <img mat-card-image src="../../../../../assets/images/about-pets.png" alt="Pets default photo">
+  <img mat-card-image [src]="photoUrl" alt="Pets default photo">
   <mat-card-header class="pet-small-card__header">
     <mat-card-title class="pet-small-card__header-title">{{ pet.name }}</mat-card-title>
     <mat-card-subtitle class="pet-small-card__header-subtitle">{{ pet.animalType }}</mat-card-subtitle>
