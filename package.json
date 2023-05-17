@@ -24,6 +24,7 @@
     "rxjs": "~7.8.0",
     "scss-reset": "^1.2.2",
     "tslib": "^2.3.0",
+    "unsplash-js": "^7.0.18",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

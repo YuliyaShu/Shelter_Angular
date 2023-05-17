@@ -38,36 +38,35 @@ export class PetsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => {
       sub.unsubscribe();
-      console.log('unsubscribe');
     });
   }
 
   loadPets(): void {
     const subscription = this.petsService.getAllPets()
-    .pipe(
-      tap((res) => this.pets$.next(res)),
-      catchError((err) => {
-      throw new Error(`There is an error: ${err}`)
-      })
-    ).subscribe()
+      .pipe(
+        tap((res) => this.pets$.next(res)),
+        catchError((err) => {
+        throw new Error(`There is an error: ${err}`)
+        })
+      )
+      .subscribe();
     this.subscriptions.push(subscription);
-    console.log('🚀 ~ loadPets ~ subscription:', this.subscriptions);
   }
 
   addPet(petRequestBody: AddPetRequestBody): Observable<Pet | null> {
     this.newPet$ = this.petsService.addPet(petRequestBody)
-    .pipe(
-      tap((res: Pet) => {
-        if (res) {
-          this.snackBarService.callSnackBar('Added successfully!');
-          this.loadPets();
-        }
-      }),
-      catchError(() => {
-        this.snackBarService.callSnackBar('Something went wrong! Please try later!');
-        return of();
-      })
-    )
+      .pipe(
+        tap((res: Pet) => {
+          if (res) {
+            this.snackBarService.callSnackBar('Added successfully!');
+            this.loadPets();
+          }
+        }),
+        catchError(() => {
+          this.snackBarService.callSnackBar('Something went wrong! Please try later!');
+          return of();
+        })
+      )
     return this.newPet$;
   }
 
@@ -90,18 +89,18 @@ export class PetsComponent implements OnInit, OnDestroy {
 
   updatePet(newPetData: PetWithStringId): Observable<UpdatePetResponse> {
     this.updatedPet$ = this.petsService.updatePet(newPetData._id, newPetData)
-    .pipe(
-      tap((res) => {
-        if (res) {
-          this.snackBarService.callSnackBar('Updated successfully!');
-          this.loadPets();
-        }
-      }),
-      catchError(() => {
-        this.snackBarService.callSnackBar('Something went wrong! Please try later!');
-        return of() as Observable<UpdatePetResponse>;
-      })
-    )
+      .pipe(
+        tap((res) => {
+          if (res) {
+            this.snackBarService.callSnackBar('Updated successfully!');
+            this.loadPets();
+          }
+        }),
+        catchError(() => {
+          this.snackBarService.callSnackBar('Something went wrong! Please try later!');
+          return of() as Observable<UpdatePetResponse>;
+        })
+      )
     return this.updatedPet$;
   }
 }
