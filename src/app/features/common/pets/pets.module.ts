@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPetButtonComponent } from './add-pet-button/add-pet-button.component';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component
     MatInputModule,
     SharedModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     PetsComponent,

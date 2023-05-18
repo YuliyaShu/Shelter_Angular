@@ -23,6 +23,7 @@ export class PetsComponent implements OnInit, OnDestroy {
   newPet$ = new Observable<Pet>();
   defaultPet = CONSTANTS.PET_DEFAULT;
   isAdminRoute = false;
+  isLoaded = false;
 
   constructor(
     private petsService: PetsService,
@@ -49,7 +50,9 @@ export class PetsComponent implements OnInit, OnDestroy {
         throw new Error(`There is an error: ${err}`)
         })
       )
-      .subscribe();
+      .subscribe(() => {
+        this.isLoaded = true;
+      });
     this.subscriptions.push(subscription);
   }
 

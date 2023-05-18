@@ -1,5 +1,5 @@
 <ng-container *ngIf="pets$ | async">
-
+  <div class="warning" *ngIf="!isLoaded">Data is loading... Please, be patient. The first time it can hold about 2-3 minutes.</div>
   <app-pet-small-card
     (deletedPetId)="deletePet($event)"
     (updatedPetData)="updatePet($event)"
